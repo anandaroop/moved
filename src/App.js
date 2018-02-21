@@ -1,41 +1,26 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { MAPBOX_ACCESS_TOKEN } from './secrets'
-import mapboxgl from 'mapbox-gl'
-
-mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN
-
-const MapContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
-`
-class App extends React.Component {
-  _container
-  _map
-
-  static propTypes = {
-    initialStyle: PropTypes.string.isRequired
-  }
-
-  static defaultProps = {
-    initialStyle: 'mapbox/light-v9'
-  }
-
-  componentDidMount() {
-    const options = {
-      container: this._container,
-      style: `mapbox://styles/${this.props.initialStyle}`
-    }
-    this._map = new mapboxgl.Map(options)
-  }
-
-  componentWillUnmount() {
-    this._map.remove()
-  }
-
+import React, { Component } from 'react'
+import { MovingMap } from './MovingMap'
+class App extends Component {
   render() {
-    return <MapContainer innerRef={el => (this._container = el)} />
+    const props = {
+      startView: {
+        center: { lng: -73.96581, lat: 40.688828 },
+        zoom: 17.5,
+        bearing: -40,
+        pitch: 60
+      },
+      endView: {
+        center: { lng: -73.893013, lat: 40.750101 },
+        zoom: 17.5,
+        bearing: -160,
+        pitch: 60
+      }
+    }
+    return (
+      <div>
+        <MovingMap {...props} />
+      </div>
+    )
   }
 }
 
