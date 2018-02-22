@@ -17,7 +17,7 @@ class App extends Component {
       }
     }
     return (
-      <div>
+      <div style={{ width: '100vw', height: '100vh' }}>
         <MovingMap {...props} />
       </div>
     )
