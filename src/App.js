@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { MovingMap } from './MovingMap'
+import { Preflight, WeHaveMoved } from './Slides'
 
 const query = () =>
   document.location.search
@@ -54,6 +55,7 @@ class App extends Component {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         this.setState({
+          currentSlide: 0,
           currentMapStop: 1
         })
         resolve('goodbyeBrooklyn')
@@ -100,6 +102,8 @@ class App extends Component {
     }
     return (
       <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
+        {this.state.currentSlide === 1 && <Preflight />}
+        {this.state.currentSlide === 2 && <WeHaveMoved />}
         <MovingMap {...props} debug={isDebugging()} />
       </div>
     )
