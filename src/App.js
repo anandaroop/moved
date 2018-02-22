@@ -1,5 +1,16 @@
 import React, { Component } from 'react'
 import { MovingMap } from './MovingMap'
+
+const query = () =>
+  document.location.search
+    .substring(1)
+    .split(/&/)
+    .map(pair => pair.split(/=/))
+
+const isDebugging = () =>
+  query().filter(([k, v]) => k === 'debug' && ['1', 'true'].indexOf(v) >= 0)
+    .length > 0
+
 class App extends Component {
   render() {
     const props = {
@@ -18,7 +29,7 @@ class App extends Component {
     }
     return (
       <div style={{ width: '100vw', height: '100vh' }}>
-        <MovingMap {...props} />
+        <MovingMap {...props} debug={isDebugging()} />
       </div>
     )
   }

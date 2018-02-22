@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { MAPBOX_ACCESS_TOKEN } from './secrets'
 import mapboxgl from 'mapbox-gl'
+import { Debug } from './Debug'
 
 mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN
 
@@ -65,7 +66,12 @@ class MovingMap extends Component {
   }
 
   render() {
-    return <MapContainer innerRef={el => (this._container = el)} />
+    const { debug } = this.props
+    return (
+      <MapContainer innerRef={el => (this._container = el)}>
+        {debug && <Debug map={this} />}
+      </MapContainer>
+    )
   }
 }
 
