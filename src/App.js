@@ -12,6 +12,44 @@ const isDebugging = () =>
     .length > 0
 
 class App extends Component {
+  async componentDidMount() {
+    console.log(await this.preflight())
+    console.log(await this.weHaveMoved())
+    console.log(await this.goodbyeBrooklyn())
+    console.log(await this.helloQueens())
+    console.log(await this.newAddress())
+  }
+
+  preflight = () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(resolve, 1000, 'preflight')
+    })
+  }
+
+  weHaveMoved = () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(resolve, 1000, 'weHaveMoved')
+    })
+  }
+
+  goodbyeBrooklyn = () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(resolve, 1000, 'goodbyeBrooklyn')
+    })
+  }
+
+  helloQueens = () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(resolve, 1000, 'helloQueens')
+    })
+  }
+
+  newAddress = () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(resolve, 1000, 'newAddress')
+    })
+  }
+
   render() {
     const props = {
       startView: {
