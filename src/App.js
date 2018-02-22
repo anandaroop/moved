@@ -12,6 +12,14 @@ const isDebugging = () =>
     .length > 0
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      currentSlide: 0,
+      currentMapStop: 0
+    }
+  }
+
   async componentDidMount() {
     console.log(await this.preflight())
     console.log(await this.weHaveMoved())
@@ -22,31 +30,56 @@ class App extends Component {
 
   preflight = () => {
     return new Promise((resolve, reject) => {
-      setTimeout(resolve, 1000, 'preflight')
+      setTimeout(() => {
+        this.setState({
+          currentSlide: 1
+        })
+        resolve('preflight')
+      }, 1500)
     })
   }
 
   weHaveMoved = () => {
     return new Promise((resolve, reject) => {
-      setTimeout(resolve, 1000, 'weHaveMoved')
+      setTimeout(() => {
+        this.setState({
+          currentSlide: 2
+        })
+        resolve('weHaveMoved')
+      }, 1500)
     })
   }
 
   goodbyeBrooklyn = () => {
     return new Promise((resolve, reject) => {
-      setTimeout(resolve, 1000, 'goodbyeBrooklyn')
+      setTimeout(() => {
+        this.setState({
+          currentMapStop: 1
+        })
+        resolve('goodbyeBrooklyn')
+      }, 1500)
     })
   }
 
   helloQueens = () => {
     return new Promise((resolve, reject) => {
-      setTimeout(resolve, 1000, 'helloQueens')
+      setTimeout(() => {
+        this.setState({
+          currentMapStop: 2
+        })
+        resolve('helloQueens')
+      }, 1500)
     })
   }
 
   newAddress = () => {
     return new Promise((resolve, reject) => {
-      setTimeout(resolve, 1000, 'newAddress')
+      setTimeout(() => {
+        this.setState({
+          currentSlide: 3
+        })
+        resolve('newAddress')
+      }, 1500)
     })
   }
 
@@ -66,7 +99,7 @@ class App extends Component {
       }
     }
     return (
-      <div style={{ width: '100vw', height: '100vh' }}>
+      <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
         <MovingMap {...props} debug={isDebugging()} />
       </div>
     )
