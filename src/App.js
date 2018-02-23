@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { MovingMap } from './MovingMap'
-import { Preflight, WeHaveMoved } from './Slides'
+import { Preflight, WeHaveMoved } from './slides'
 
 const query = () =>
   document.location.search
