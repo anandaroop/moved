@@ -13,76 +13,95 @@ const isDebugging = () =>
     .length > 0
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      currentSlide: 0,
-      currentMapStop: 0
-    }
+  static initialState = {
+    currentSlide: 0,
+    currentMapStop: 0
   }
 
-  async componentDidMount() {
+  constructor(props) {
+    super(props)
+    this.state = App.initialState
+  }
+
+  reset = () => {
+    this.setState(App.initialState)
+  }
+
+  cycle = async () => {
     console.log(await this.preflight())
     console.log(await this.weHaveMoved())
-    console.log(await this.goodbyeBrooklyn())
-    console.log(await this.helloQueens())
-    console.log(await this.newAddress())
+    // console.log(await this.goodbyeBrooklyn())
+    // console.log(await this.helloQueens())
+    // console.log(await this.newAddress())
+    this.reset()
   }
 
   preflight = () => {
     return new Promise((resolve, reject) => {
+      console.log('preflight start')
+      this.setState({
+        currentSlide: 1
+      })
       setTimeout(() => {
-        this.setState({
-          currentSlide: 1
-        })
-        resolve('preflight')
-      }, 1500)
+        resolve('preflight end')
+      }, 3000)
     })
   }
 
   weHaveMoved = () => {
     return new Promise((resolve, reject) => {
+      console.log('weHaveMoved start')
+      this.setState({
+        currentSlide: 2
+      })
       setTimeout(() => {
-        this.setState({
-          currentSlide: 2
-        })
-        resolve('weHaveMoved')
-      }, 1500)
+        resolve('weHaveMoved end')
+      }, 3000)
     })
   }
 
   goodbyeBrooklyn = () => {
     return new Promise((resolve, reject) => {
+      console.log('goodbyeBrooklyn start')
+      this.setState({
+        currentSlide: 0,
+        currentMapStop: 1
+      })
       setTimeout(() => {
-        this.setState({
-          currentSlide: 0,
-          currentMapStop: 1
-        })
-        resolve('goodbyeBrooklyn')
-      }, 1500)
+        resolve('goodbyeBrooklyn end')
+      }, 3000)
     })
   }
 
   helloQueens = () => {
     return new Promise((resolve, reject) => {
+      console.log('helloQueens start')
+      this.setState({
+        currentMapStop: 2
+      })
       setTimeout(() => {
-        this.setState({
-          currentMapStop: 2
-        })
-        resolve('helloQueens')
-      }, 1500)
+        resolve('helloQueens end')
+      }, 3000)
     })
   }
 
   newAddress = () => {
     return new Promise((resolve, reject) => {
+      console.log('newAddress start')
+      this.setState({
+        currentSlide: 3
+      })
       setTimeout(() => {
-        this.setState({
-          currentSlide: 3
-        })
-        resolve('newAddress')
-      }, 1500)
+        resolve('newAddress end')
+      }, 3000)
     })
+  }
+
+  async componentDidMount() {
+    let n = 10
+    while (n--) {
+      await this.cycle()
+    }
   }
 
   render() {
