@@ -36,6 +36,10 @@ class MovingMap extends Component {
     initialStyle: 'mapbox/light-v9'
   }
 
+  reset = () => {
+    this._map.jumpTo(this.props.startView)
+  }
+
   forward = () => {
     this._map.flyTo(this.props.endView)
   }
@@ -59,6 +63,15 @@ class MovingMap extends Component {
       pitch
     }
     this._map = new mapboxgl.Map(options)
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return this.props.stop !== nextProps.stop
+  }
+
+  componentWillUpdate(nextProps) {
+    nextProps.stop === 0 && this.reset()
+    nextProps.stop === 1 && this.forward()
   }
 
   componentWillUnmount() {

@@ -34,7 +34,7 @@ class App extends Component {
   cycle = async () => {
     console.log(await this.preflight())
     console.log(await this.weHaveMoved())
-    // console.log(await this.goodbyeBrooklyn())
+    console.log(await this.goodbyeBrooklyn())
     // console.log(await this.helloQueens())
     // console.log(await this.newAddress())
     if (isLooping()) {
@@ -64,7 +64,7 @@ class App extends Component {
   goodbyeBrooklyn = () => {
     return this.setStateAndWait(
       { currentSlide: 0, currentMapStop: 1 },
-      3000,
+      7000,
       'goodbyeBrooklyn'
     )
   }
@@ -100,7 +100,11 @@ class App extends Component {
       <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
         {this.state.currentSlide === 1 && <Preflight />}
         {this.state.currentSlide === 2 && <WeHaveMoved />}
-        <MovingMap {...props} debug={isDebugging()} />
+        <MovingMap
+          {...props}
+          stop={this.state.currentMapStop}
+          debug={isDebugging()}
+        />
       </div>
     )
   }
