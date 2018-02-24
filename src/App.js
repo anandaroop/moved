@@ -1,20 +1,7 @@
 import React, { Component } from 'react'
 import { MovingMap } from './MovingMap'
 import { Preflight, WeHaveMoved } from './slides'
-
-const query = () =>
-  document.location.search
-    .substring(1)
-    .split(/&/)
-    .map(pair => pair.split(/=/))
-
-const isDebugging = () =>
-  query().filter(([k, v]) => k === 'debug' && ['1', 'true'].indexOf(v) >= 0)
-    .length > 0
-
-const isLooping = () =>
-  query().filter(([k, v]) => k === 'loop' && ['1', 'true'].indexOf(v) >= 0)
-    .length > 0
+import { isDebugging, isLooping } from './querystring'
 
 class App extends Component {
   static initialState = {
@@ -31,25 +18,23 @@ class App extends Component {
     this.setState(App.initialState)
   }
 
-  cycle = async () => {
-    console.log(await this.preflight())
-    console.log(await this.weHaveMoved())
-    console.log(await this.goodbyeBrooklyn())
-    // console.log(await this.helloQueens())
-    // console.log(await this.newAddress())
+  play = async () => {
+    await this.preflight()
+    await this.weHaveMoved()
+    await this.goodbyeBrooklyn()
+    // await this.helloQueens()
+    // await this.newAddress()
     if (isLooping()) {
       this.reset()
-      await this.cycle()
+      await this.play()
     }
   }
 
-  setStateAndWait = (stateUpdate, delay, msg = '') => {
+  setStateAndWait = (stateUpdate, delay, msg = null) => {
     return new Promise((resolve, reject) => {
-      msg && console.log(`${msg} start`)
+      msg && console.log(msg, stateUpdate)
       this.setState(stateUpdate)
-      setTimeout(() => {
-        msg ? resolve(`${msg} end`) : resolve()
-      }, delay)
+      setTimeout(resolve, delay)
     })
   }
 
@@ -78,10 +63,11 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    await this.cycle()
+    await this.play()
   }
 
   render() {
+    const { currentSlide, currentMapStop } = this.state
     const props = {
       startView: {
         center: { lng: -73.96581, lat: 40.688828 },
@@ -98,13 +84,9 @@ class App extends Component {
     }
     return (
       <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
-        {this.state.currentSlide === 1 && <Preflight />}
-        {this.state.currentSlide === 2 && <WeHaveMoved />}
-        <MovingMap
-          {...props}
-          stop={this.state.currentMapStop}
-          debug={isDebugging()}
-        />
+        {currentSlide === 1 && <Preflight />}
+        {currentSlide === 2 && <WeHaveMoved />}
+        <MovingMap {...props} stop={currentMapStop} debug={isDebugging()} />
       </div>
     )
   }
