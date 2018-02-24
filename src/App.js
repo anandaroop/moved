@@ -12,6 +12,10 @@ const isDebugging = () =>
   query().filter(([k, v]) => k === 'debug' && ['1', 'true'].indexOf(v) >= 0)
     .length > 0
 
+const isLooping = () =>
+  query().filter(([k, v]) => k === 'loop' && ['1', 'true'].indexOf(v) >= 0)
+    .length > 0
+
 class App extends Component {
   static initialState = {
     currentSlide: 0,
@@ -33,75 +37,48 @@ class App extends Component {
     // console.log(await this.goodbyeBrooklyn())
     // console.log(await this.helloQueens())
     // console.log(await this.newAddress())
-    this.reset()
+    if (isLooping()) {
+      this.reset()
+      await this.cycle()
+    }
+  }
+
+  setStateAndWait = (stateUpdate, delay, msg = '') => {
+    return new Promise((resolve, reject) => {
+      msg && console.log(`${msg} start`)
+      this.setState(stateUpdate)
+      setTimeout(() => {
+        msg ? resolve(`${msg} end`) : resolve()
+      }, delay)
+    })
   }
 
   preflight = () => {
-    return new Promise((resolve, reject) => {
-      console.log('preflight start')
-      this.setState({
-        currentSlide: 1
-      })
-      setTimeout(() => {
-        resolve('preflight end')
-      }, 3000)
-    })
+    return this.setStateAndWait({ currentSlide: 1 }, 3000, 'preflight')
   }
 
   weHaveMoved = () => {
-    return new Promise((resolve, reject) => {
-      console.log('weHaveMoved start')
-      this.setState({
-        currentSlide: 2
-      })
-      setTimeout(() => {
-        resolve('weHaveMoved end')
-      }, 3000)
-    })
+    return this.setStateAndWait({ currentSlide: 2 }, 3000, 'weHaveMoved')
   }
 
   goodbyeBrooklyn = () => {
-    return new Promise((resolve, reject) => {
-      console.log('goodbyeBrooklyn start')
-      this.setState({
-        currentSlide: 0,
-        currentMapStop: 1
-      })
-      setTimeout(() => {
-        resolve('goodbyeBrooklyn end')
-      }, 3000)
-    })
+    return this.setStateAndWait(
+      { currentSlide: 0, currentMapStop: 1 },
+      3000,
+      'goodbyeBrooklyn'
+    )
   }
 
   helloQueens = () => {
-    return new Promise((resolve, reject) => {
-      console.log('helloQueens start')
-      this.setState({
-        currentMapStop: 2
-      })
-      setTimeout(() => {
-        resolve('helloQueens end')
-      }, 3000)
-    })
+    return this.setStateAndWait({ currentMapStop: 2 }, 3000, 'helloQueens')
   }
 
   newAddress = () => {
-    return new Promise((resolve, reject) => {
-      console.log('newAddress start')
-      this.setState({
-        currentSlide: 3
-      })
-      setTimeout(() => {
-        resolve('newAddress end')
-      }, 3000)
-    })
+    return this.setStateAndWait({ currentSlide: 3 }, 3000, 'newAddress')
   }
 
   async componentDidMount() {
-    let n = 10
-    while (n--) {
-      await this.cycle()
-    }
+    await this.cycle()
   }
 
   render() {
