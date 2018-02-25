@@ -3,11 +3,11 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Keyframes, Frame } from 'react-keyframes'
 import { Map } from './Map'
-import { Preflight } from './frames'
+import { Preflight, Goodbye, Noop, Hello, Address } from './frames'
 
 const Fullscreen = styled.div`
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
 `
 
 const origin = {
@@ -42,6 +42,18 @@ class App2 extends Component {
     }
   }
 
+  startPreflighting = () => {
+    this.setState({
+      mapState: Map.PREFLIGHTING
+    })
+  }
+
+  startFlying = () => {
+    this.setState({
+      mapState: Map.FLYING
+    })
+  }
+
   // componentWillMount() {}
   // componentDidMount() { }
   // componentWillReceiveProps(nextProps) {}
@@ -55,35 +67,20 @@ class App2 extends Component {
       <Fullscreen>
         <Map {...mapProps} mapState={this.state.mapState} />
         <Keyframes>
-          {/* display a splash screen while we prefetch vector tiles */}
           <Frame
             duration={5000}
             animationDuration={5000}
             component={Preflight}
-            onRender={() => {
-              this.setState({
-                mapState: Map.PREFLIGHTING
-              })
-            }}
+            onRender={this.startPreflighting}
           />
 
-          <Frame duration={3000}>g2b</Frame>
+          <Frame duration={3000} animationDuration={3000} component={Goodbye} />
 
-          {/* show an empty span while we fly */}
-          <Frame
-            duration={6000}
-            onRender={() => {
-              this.setState({
-                mapState: Map.FLYING
-              })
-            }}
-          >
-            {''}
-          </Frame>
+          <Frame duration={6000} component={Noop} onRender={this.startFlying} />
 
-          <Frame duration={3000}>h2q</Frame>
+          <Frame duration={3000} animationDuration={3000} component={Hello} />
 
-          <Frame duration={3000}>73a</Frame>
+          <Frame duration={3000} animationDuration={3000} component={Address} />
         </Keyframes>
       </Fullscreen>
     )
