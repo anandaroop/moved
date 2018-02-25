@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Keyframes, Frame } from 'react-keyframes'
 import { Map } from './Map'
@@ -33,7 +32,7 @@ const mapProps = {
   preflightDuration: 5000
 }
 
-class App2 extends Component {
+class App extends Component {
   static propTypes = {}
 
   constructor(props) {
@@ -55,37 +54,20 @@ class App2 extends Component {
     })
   }
 
-  // componentWillMount() {}
-  // componentDidMount() { }
-  // componentWillReceiveProps(nextProps) {}
-  // shouldComponentUpdate(nextProps, nextState) {}
-  // componentWillUpdate(nextProps, nextState) {}
-  // componentDidUpdate(prevProps, prevState) {}
-  // componentWillUnmount() {}
-
   render() {
     return (
       <Fullscreen>
         <Map {...mapProps} mapState={this.state.mapState} />
         <Keyframes loop={isLooping()}>
-          <Frame
-            duration={5000}
-            animationDuration={5000}
-            component={Preflight}
-            onRender={this.startPreflighting}
-          />
-
-          <Frame duration={3000} animationDuration={3000} component={Goodbye} />
-
-          <Frame duration={6000} component={Noop} onRender={this.startFlying} />
-
-          <Frame duration={3000} animationDuration={3000} component={Hello} />
-
-          <Frame duration={3000} animationDuration={3000} component={Address} />
+          <Frame component={Preflight} duration={5000} animationDuration={5000} onRender={this.startPreflighting} />
+          <Frame component={Goodbye} duration={3000} animationDuration={3000} />
+          <Frame component={Noop} duration={6000} onRender={this.startFlying} />
+          <Frame component={Hello} duration={3000} animationDuration={3000} />
+          <Frame component={Address} duration={3000} animationDuration={3000} />
         </Keyframes>
       </Fullscreen>
     )
   }
 }
 
-export default App2
+export default App
