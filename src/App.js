@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Keyframes, Frame } from 'react-keyframes'
 import { Map } from './Map'
 import { Preflight, Goodbye, Noop, Hello, Address } from './frames'
+import { isLooping } from './querystring'
 
 const Fullscreen = styled.div`
   width: 100vw;
@@ -66,7 +67,7 @@ class App2 extends Component {
     return (
       <Fullscreen>
         <Map {...mapProps} mapState={this.state.mapState} />
-        <Keyframes>
+        <Keyframes loop={isLooping()}>
           <Frame
             duration={5000}
             animationDuration={5000}
