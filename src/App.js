@@ -25,9 +25,10 @@ const destination = {
 }
 
 const mapProps = {
+  style: 'artsyroop/cjdqwo0gm1vba2ro9bu1uagf0',
   origin,
   destination,
-  duration: 7000,
+  duration: 10000,
   preflight: true,
   preflightDuration: 5000
 }
@@ -61,7 +62,7 @@ class App extends Component {
         <Keyframes loop={isLooping()}>
           <Frame duration={5000} component={Preflight} onRender={this.startPreflighting} />
           <Frame duration={3000} component={Goodbye} />
-          <Frame duration={6000} component={Blank} onRender={this.startFlying} />
+          <Frame duration={7000} component={Blank} onRender={this.startFlying} />
           <Frame duration={3000} component={Hello} />
           <Frame duration={3000} component={Address} />
         </Keyframes>

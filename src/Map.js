@@ -36,7 +36,7 @@ class Map extends Component {
   }
 
   static defaultProps = {
-    style: `mapbox://styles/mapbox/light-v9`
+    style: 'mapbox/light-v9'
   }
 
   _container
@@ -58,7 +58,7 @@ class Map extends Component {
 
     this._map = new mapboxgl.Map({
       container: this._container,
-      style: this.props.style,
+      style: `mapbox://styles/${this.props.style}`,
       ...startingView
     })
 
