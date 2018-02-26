@@ -14,7 +14,10 @@
     "husky": "^0.14.3",
     "lint-staged": "^6.1.1",
     "prettier": "^1.10.2",
-    "react-scripts": "1.1.1"
+    "react-scripts": "1.1.1",
+    "@storybook/react": "^3.3.14",
+    "@storybook/addon-actions": "^3.3.14",
+    "@storybook/addon-links": "^3.3.14"
   },
   "homepage": "http://anandaroop.github.io/change",
   "lint-staged": {
@@ -30,7 +33,9 @@
     "build": "react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "prettier": {
     "printWidth": 120,
