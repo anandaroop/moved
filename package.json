@@ -6,7 +6,7 @@
     "mapbox-gl": "^0.44.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-keyframes": "^0.2.3",
+    "react-keyframes": "https://github.com/anandaroop/react-keyframes.git#passthru-duration",
     "styled-components": "^3.1.6"
   },
   "devDependencies": {
@@ -18,7 +18,10 @@
   },
   "homepage": "http://anandaroop.github.io/change",
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": ["prettier --single-quote --no-semi --print-width 120 --write", "git add"]
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --single-quote --no-semi --print-width 120 --write",
+      "git add"
+    ]
   },
   "scripts": {
     "test": "react-scripts test --env=jsdom",
