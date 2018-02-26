@@ -1,13 +1,24 @@
 import React from 'react'
-
+import styled from 'styled-components'
 import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
-import { linkTo } from '@storybook/addon-links'
+// import { action } from '@storybook/addon-actions'
+// import { linkTo } from '@storybook/addon-links'
 
-import { Button, Welcome } from '@storybook/react/demo'
+import '../index.css'
+import { Preflight } from '../frames/Preflight'
+import bg from '../stories/bg.png'
 
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />)
+const SampleBackgroundMap = styled.div`
+  font-family: sans-serif;
+  width: 100vw;
+  height: 100vh;
+  background-image: url(${bg});
+  background-size: cover;
+  position: absolute;
+`
 
-storiesOf('Button', module)
-  .add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
-  .add('with some emoji', () => <Button onClick={action('clicked')}>😀 😎 👍 💯</Button>)
+storiesOf('Frames', module).add('Preflight', () => (
+  <SampleBackgroundMap>
+    <Preflight duration={5000} />
+  </SampleBackgroundMap>
+))
