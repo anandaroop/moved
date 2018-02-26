@@ -13,11 +13,9 @@ const Layout = styled.div`
   z-index: 1;
 
   animation-name: ${animate};
-  animation-duration: ${props => `${props.animationDuration / 1000}s`};
+  animation-duration: ${props => `${props.duration / 1000}s`};
 `
 
-const Address = ({ animationDuration }) => (
-  <Layout animationDuration={animationDuration}>73a</Layout>
-)
+const Address = ({ duration }) => <Layout duration={duration}>73a</Layout>
 
 export { Address }

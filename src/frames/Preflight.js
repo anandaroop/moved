@@ -17,7 +17,7 @@ const Layout = styled.div`
   background: white;
 
   animation-name: ${animate};
-  animation-duration: ${props => `${props.animationDuration / 1000}s`};
+  animation-duration: ${props => `${props.duration / 1000}s`};
   /* animation-timing-function: ; */
   /* animation-delay: 0s; */
   /* animation-iteration-count: ; */
@@ -73,10 +73,9 @@ const Moved = styled.span`
   animation-duration: 4s;
 `
 
-const Preflight = ({ animationDuration }) => (
-  <Layout animationDuration={animationDuration}>
-    <Roop>A</Roop> <Linta>and B</Linta> <Leela>and C</Leela>{' '}
-    <Moved>and D</Moved>
+const Preflight = ({ duration }) => (
+  <Layout duration={duration}>
+    <Roop>A</Roop> <Linta>and B</Linta> <Leela>and C</Leela> <Moved>and D</Moved>
   </Layout>
 )
 

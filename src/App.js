@@ -59,11 +59,11 @@ class App extends Component {
       <Fullscreen>
         <Map {...mapProps} mapState={this.state.mapState} />
         <Keyframes loop={isLooping()}>
-          <Frame component={Preflight} duration={5000} animationDuration={5000} onRender={this.startPreflighting} />
-          <Frame component={Goodbye} duration={3000} animationDuration={3000} />
-          <Frame component={Noop} duration={6000} onRender={this.startFlying} />
-          <Frame component={Hello} duration={3000} animationDuration={3000} />
-          <Frame component={Address} duration={3000} animationDuration={3000} />
+          <Frame duration={5000} component={Preflight} onRender={this.startPreflighting} />
+          <Frame duration={3000} component={Goodbye} />
+          <Frame duration={6000} component={Noop} onRender={this.startFlying} />
+          <Frame duration={3000} component={Hello} />
+          <Frame duration={3000} component={Address} />
         </Keyframes>
       </Fullscreen>
     )

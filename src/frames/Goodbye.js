@@ -13,11 +13,9 @@ const Layout = styled.div`
   z-index: 1;
 
   animation-name: ${animate};
-  animation-duration: ${props => `${props.animationDuration / 1000}s`};
+  animation-duration: ${props => `${props.duration / 1000}s`};
 `
 
-const Goodbye = ({ animationDuration }) => (
-  <Layout animationDuration={animationDuration}>g2b</Layout>
-)
+const Goodbye = ({ duration }) => <Layout duration={duration}>g2b</Layout>
 
 export { Goodbye }
