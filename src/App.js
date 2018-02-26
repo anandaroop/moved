@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Keyframes, Frame } from 'react-keyframes'
 import { Map } from './Map'
-import { Preflight, Goodbye, Noop, Hello, Address } from './frames'
+import { Preflight, Goodbye, Blank, Hello, Address } from './frames'
 import { isLooping } from './querystring'
 
 const Fullscreen = styled.div`
@@ -61,7 +61,7 @@ class App extends Component {
         <Keyframes loop={isLooping()}>
           <Frame duration={5000} component={Preflight} onRender={this.startPreflighting} />
           <Frame duration={3000} component={Goodbye} />
-          <Frame duration={6000} component={Noop} onRender={this.startFlying} />
+          <Frame duration={6000} component={Blank} onRender={this.startFlying} />
           <Frame duration={3000} component={Hello} />
           <Frame duration={3000} component={Address} />
         </Keyframes>
