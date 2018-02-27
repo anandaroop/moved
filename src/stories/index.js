@@ -1,11 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { storiesOf } from '@storybook/react'
-// import { action } from '@storybook/addon-actions'
-// import { linkTo } from '@storybook/addon-links'
 
 import '../index.css'
-import { Preflight } from '../frames/Preflight'
+import { Preflight, Goodbye, Hello, Address } from '../frames'
 import bg from '../stories/bg.png'
 
 const SampleBackgroundMap = styled.div`
@@ -17,8 +15,9 @@ const SampleBackgroundMap = styled.div`
   position: absolute;
 `
 
-storiesOf('Frames', module).add('Preflight', () => (
-  <SampleBackgroundMap>
-    <Preflight duration={5000} />
-  </SampleBackgroundMap>
-))
+storiesOf('Frames', module)
+  .addDecorator(story => <SampleBackgroundMap>{story()}</SampleBackgroundMap>)
+  .add('Preflight', () => <Preflight duration={5000} />)
+  .add('Goodbye', () => <Goodbye duration={3000} />)
+  .add('Hello', () => <Hello duration={3000} />)
+  .add('Address', () => <Address duration={3000} />)
