@@ -2,9 +2,9 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 const slideIn = keyframes`
-  0% { opacity: 0; transform: translate(0, -5em); }
- 40% { opacity: 0; }
- 50% { opacity: 1; transform: translate(0, 0em); }  
+  0% { opacity: 0; transform: translate(0, -10em); }
+ 30% { opacity: 0; }
+ 40% { opacity: 1; transform: translate(0, 0em); }  
  95% { opacity: 1; }
 100% { opacity: 0; }
 `
@@ -29,8 +29,7 @@ const Type = styled.div`
 
 const animateHi = keyframes`
   0% { opacity: 0; }
- 30% { opacity: 0; }
- 40% { opacity: 1; }
+ 25% { opacity: 1; }
 100% { opacity: 1; }
 `
 
@@ -41,8 +40,8 @@ const Hi = styled.div`
 
 const animateQueens = keyframes`
    0% { opacity: 0; }
-  45% { opacity: 0; transform: translate(0px, -1vh)}
-  60% { opacity: 1; transform: translate(0px, 0px)}
+  35% { opacity: 0; transform: translate(0px, -1vh)}
+  45% { opacity: 1; transform: translate(0px, 0px)}
  100% { opacity: 1; }
  `
 

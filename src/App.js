@@ -68,8 +68,8 @@ class App extends Component {
           <Frame duration={5000} component={Preflight} onRender={this.startPreflighting} />
           <Frame duration={4000} component={Goodbye} onRender={this.waitThenStartFlying} />
           <Frame duration={2000} component={Blank} />
-          <Frame duration={4000} component={Hello} />
-          <Frame duration={3000} component={Address} />
+          <Frame duration={5000} component={Hello} />
+          <Frame duration={5000} component={Address} />
         </Keyframes>
       </Fullscreen>
     )
