@@ -55,14 +55,18 @@ class App extends Component {
     })
   }
 
+  waitThenStartFlying = (delay = 2000) => {
+    setTimeout(this.startFlying, delay)
+  }
+
   render() {
     return (
       <Fullscreen>
         <Map {...mapProps} mapState={this.state.mapState} />
         <Keyframes loop={isLooping()}>
           <Frame duration={5000} component={Preflight} onRender={this.startPreflighting} />
-          <Frame duration={4000} component={Goodbye} />
-          <Frame duration={7000} component={Blank} onRender={this.startFlying} />
+          <Frame duration={4000} component={Goodbye} onRender={this.waitThenStartFlying} />
+          <Frame duration={7000} component={Blank} />
           <Frame duration={3000} component={Hello} />
           <Frame duration={3000} component={Address} />
         </Keyframes>
