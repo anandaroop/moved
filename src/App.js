@@ -8,6 +8,7 @@ import { isLooping } from './querystring'
 const Fullscreen = styled.div`
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 `
 
 const origin = {
@@ -28,7 +29,7 @@ const mapProps = {
   style: 'artsyroop/cjdqwo0gm1vba2ro9bu1uagf0',
   origin,
   destination,
-  duration: 10000,
+  duration: 8000,
   preflight: true,
   preflightDuration: 5000
 }
@@ -66,8 +67,8 @@ class App extends Component {
         <Keyframes loop={isLooping()}>
           <Frame duration={5000} component={Preflight} onRender={this.startPreflighting} />
           <Frame duration={4000} component={Goodbye} onRender={this.waitThenStartFlying} />
-          <Frame duration={7000} component={Blank} />
-          <Frame duration={3000} component={Hello} />
+          <Frame duration={2000} component={Blank} />
+          <Frame duration={4000} component={Hello} />
           <Frame duration={3000} component={Address} />
         </Keyframes>
       </Fullscreen>

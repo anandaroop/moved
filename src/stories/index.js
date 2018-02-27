@@ -10,6 +10,7 @@ const SampleBackgroundMap = styled.div`
   font-family: sans-serif;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
   background-image: url(${bg});
   background-size: cover;
   position: absolute;
