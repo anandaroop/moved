@@ -61,7 +61,7 @@ class App extends Component {
         <Map {...mapProps} mapState={this.state.mapState} />
         <Keyframes loop={isLooping()}>
           <Frame duration={5000} component={Preflight} onRender={this.startPreflighting} />
-          <Frame duration={3000} component={Goodbye} />
+          <Frame duration={4000} component={Goodbye} />
           <Frame duration={7000} component={Blank} onRender={this.startFlying} />
           <Frame duration={3000} component={Hello} />
           <Frame duration={3000} component={Address} />

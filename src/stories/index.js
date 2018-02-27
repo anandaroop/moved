@@ -18,6 +18,6 @@ const SampleBackgroundMap = styled.div`
 storiesOf('Frames', module)
   .addDecorator(story => <SampleBackgroundMap>{story()}</SampleBackgroundMap>)
   .add('Preflight', () => <Preflight duration={5000} />)
-  .add('Goodbye', () => <Goodbye duration={3000} />)
+  .add('Goodbye', () => <Goodbye duration={4000} />)
   .add('Hello', () => <Hello duration={3000} />)
   .add('Address', () => <Address duration={3000} />)

@@ -1,5 +1,8 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
+import { NAMES } from '../config'
+
+const { name1, name2, name3 } = NAMES
 
 const delayedFadeOut = keyframes`
   0% { opacity: 1; }
@@ -7,7 +10,7 @@ const delayedFadeOut = keyframes`
 100% { opacity: 0; }
 `
 
-const Overlay = styled.div`
+const FadingOverlay = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -32,44 +35,40 @@ const Type = styled.div`
   font-size: 12vh;
   line-height: 120%;
   font-weight: 200;
-
-  animation-name: ${delayedFadeOut};
-  animation-duration: ${props => `${props.duration / 1000}s`};
-  animation-fill-mode: forwards;
 `
 
-const animateRoop = keyframes`
+const animateName1 = keyframes`
   0% { opacity: 0; }
  15% { opacity: 1; }
 100% { opacity: 1; }
 `
 
-const Roop = styled.div`
-  animation-name: ${animateRoop};
+const Name1 = styled.div`
+  animation-name: ${animateName1};
   animation-duration: ${props => `${props.duration / 1000}s`};
 `
 
-const animateLinta = keyframes`
+const animateName2 = keyframes`
    0% { opacity: 0; }
   15% { opacity: 0; transform: translate(0px, -1vh)}
   30% { opacity: 1; transform: translate(0px, 0px)}
  100% { opacity: 1; }
  `
 
-const Linta = styled.div`
-  animation-name: ${animateLinta};
+const Name2 = styled.div`
+  animation-name: ${animateName2};
   animation-duration: ${props => `${props.duration / 1000}s`};
 `
 
-const animateLeela = keyframes`
+const animateName3 = keyframes`
    0% { opacity: 0; }
   30% { opacity: 0; transform: translate(0px, -1vh)}
   45% { opacity: 1; transform: translate(0px, 0px)}
  100% { opacity: 1; }
  `
 
-const Leela = styled.div`
-  animation-name: ${animateLeela};
+const Name3 = styled.div`
+  animation-name: ${animateName3};
   animation-duration: ${props => `${props.duration / 1000}s`};
 `
 
@@ -87,14 +86,14 @@ const Moved = styled.div`
 `
 
 const Preflight = ({ duration }) => (
-  <Overlay duration={duration}>
+  <FadingOverlay duration={duration}>
     <Type duration={duration}>
-      <Roop duration={duration}>Roop</Roop>
-      <Linta duration={duration}>and Linta</Linta>
-      <Leela duration={duration}>and Leela have </Leela>
+      <Name1 duration={duration}>{name1}</Name1>
+      <Name2 duration={duration}>and {name2}</Name2>
+      <Name3 duration={duration}>and {name3} have </Name3>
       <Moved duration={duration}>moved</Moved>
     </Type>
-  </Overlay>
+  </FadingOverlay>
 )
 
 export { Preflight }
