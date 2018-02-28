@@ -6,6 +6,7 @@ const { addressee, address, city, state, postal } = NEW_ADDRESS
 
 const delayedFadeOut = keyframes`
   0% { opacity: 0; }
+ 10% { opacity: 0; }
  60% { opacity: 0.85; }
 100% { opacity: 0.85; }
 `
