@@ -2,17 +2,17 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 const slideIn = keyframes`
-  0% { opacity: 0; transform: translate(0, -10em); }
+  0% { opacity: 0; transform: translate(0, -20vw); }
  30% { opacity: 0; }
- 40% { opacity: 1; transform: translate(0, 0em); }  
+ 40% { opacity: 1; transform: translate(0, 0); }  
  95% { opacity: 1; }
 100% { opacity: 0; }
 `
 
 const Movement = styled.div`
   position: absolute;
-  bottom: 5em;
-  right: 5em;
+  bottom: 10vw;
+  right: 10vw;
 
   animation-name: ${slideIn};
   animation-duration: ${props => `${props.duration / 1000}s`};
@@ -22,7 +22,7 @@ const Movement = styled.div`
 
 const Type = styled.div`
   font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
-  font-size: 5em;
+  font-size: 10vw;
   line-height: 120%;
   font-weight: 200;
 `

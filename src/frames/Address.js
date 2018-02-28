@@ -31,7 +31,7 @@ const FadingOverlay = styled.div`
 
 const Type = styled.div`
   font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
-  font-size: 2em;
+  font-size: 5vw;
   line-height: 140%;
   font-weight: 200;
 `

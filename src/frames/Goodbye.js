@@ -5,14 +5,14 @@ const liftOff = keyframes`
   0% { opacity: 0; transform: translate(0, 0); }
  50% { opacity: 1; transform: translate(0, 0); }
  80% { opacity: 0; }
- 95% { opacity: 0; transform: translate(0, -15em); }  
-100% { opacity: 0; transform: translate(0, -15em); }  
+ 95% { opacity: 0; transform: translate(0, -40vw); }  
+100% { opacity: 0; transform: translate(0, -40vw); }  
 `
 
 const Movement = styled.div`
   position: absolute;
-  top: 2em;
-  left: 2em;
+  top: 5vw;
+  left: 5vw;
 
   animation-name: ${liftOff};
   animation-duration: ${props => `${props.duration / 1000}s`};
@@ -22,7 +22,7 @@ const Movement = styled.div`
 
 const Type = styled.div`
   font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
-  font-size: 5em;
+  font-size: 10vw;
   line-height: 120%;
   font-weight: 200;
 `
