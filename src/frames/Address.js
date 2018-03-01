@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { NEW_ADDRESS, VCARDS } from '../config'
+import { Reset } from '../components'
 
 const { addressee, address, city, state, postal } = NEW_ADDRESS
 
@@ -37,9 +38,15 @@ const Type = styled.div`
   font-weight: 200;
 `
 
+const Tools = styled.div`
+  margin-top: 2vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
 const Cards = styled.div`
   font-size: 2vw;
-  margin-top: 2vw;
 `
 
 const CardLink = styled.a`
@@ -50,7 +57,7 @@ const CardLink = styled.a`
   margin-left: 1vw;
 `
 
-const Address = ({ duration }) => (
+const Address = ({ duration, reset }) => (
   <FadingOverlay duration={duration}>
     <Type>
       <div>{addressee}</div>
@@ -58,10 +65,13 @@ const Address = ({ duration }) => (
       <div>
         {city}, {state} {postal}
       </div>
-      <Cards>
-        Download vCards:
-        {VCARDS.map(card => <CardLink href={card.filename}>{card.name}</CardLink>)}
-      </Cards>
+      <Tools>
+        <Cards>
+          Download vCards:
+          {VCARDS.map(card => <CardLink href={card.filename}>{card.name}</CardLink>)}
+        </Cards>
+        <Reset onClick={reset} />
+      </Tools>
     </Type>
   </FadingOverlay>
 )

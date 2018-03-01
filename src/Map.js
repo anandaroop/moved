@@ -42,6 +42,11 @@ class Map extends Component {
   _container
   _map
 
+  reset = () => {
+    const { origin } = this.props
+    this._map.jumpTo({ ...origin })
+  }
+
   preflight = () => {
     const { duration, preflightDuration, origin } = this.props
     this._map.flyTo({ duration: preflightDuration || duration, ...origin })
@@ -73,6 +78,7 @@ class Map extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { mapState } = this.props
+    mapState === Map.INITIALIZING && this.reset()
     mapState === Map.PREFLIGHTING && this.preflight()
     mapState === Map.FLYING && this.fly()
   }

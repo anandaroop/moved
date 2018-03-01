@@ -40,7 +40,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      mapState: Map.INITIALIZING
+      mapState: Map.INITIALIZING,
+      playing: true
     }
   }
 
@@ -60,17 +61,27 @@ class App extends Component {
     setTimeout(this.startFlying, delay)
   }
 
+  reset = () => {
+    this.setState({ mapState: Map.PREFLIGHTING, playing: false })
+    setTimeout(() => {
+      this.setState({ playing: true })
+    }, 0)
+  }
+
   render() {
+    const { playing } = this.state
     return (
       <Fullscreen>
         <Map {...mapProps} mapState={this.state.mapState} />
-        <Keyframes loop={isLooping()}>
-          <Frame duration={5000} component={Preflight} onRender={this.startPreflighting} />
-          <Frame duration={4000} component={Goodbye} onRender={this.waitThenStartFlying} />
-          <Frame duration={2000} component={Blank} />
-          <Frame duration={5000} component={Hello} />
-          <Frame duration={5000} component={Address} />
-        </Keyframes>
+        {playing && (
+          <Keyframes loop={isLooping()}>
+            <Frame duration={5000} component={Preflight} onRender={this.startPreflighting} />
+            <Frame duration={4000} component={Goodbye} onRender={this.waitThenStartFlying} />
+            <Frame duration={2000} component={Blank} />
+            <Frame duration={5000} component={Hello} />
+            <Frame duration={5000} component={Address} reset={this.reset} />
+          </Keyframes>
+        )}
       </Fullscreen>
     )
   }
