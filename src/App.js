@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Keyframes, Frame } from 'react-keyframes'
-import { Map } from './Map'
+import { Map } from './components/Map'
 import { Preflight, Goodbye, Blank, Hello, Address } from './frames'
-import { isLooping } from './querystring'
+import { isLooping } from './helpers/querystring'
 
 const Fullscreen = styled.div`
   width: 100vw;

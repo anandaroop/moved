@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { MAPBOX_ACCESS_TOKEN } from './config'
+import { MAPBOX_ACCESS_TOKEN } from '../config'
 import mapboxgl from 'mapbox-gl'
 
 mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN
