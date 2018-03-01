@@ -68,7 +68,11 @@ const Address = ({ duration, reset }) => (
       <Tools>
         <Cards>
           Download vCards:
-          {VCARDS.map(card => <CardLink href={card.filename}>{card.name}</CardLink>)}
+          {VCARDS.map(card => (
+            <CardLink key={card.filename} href={card.filename}>
+              {card.name}
+            </CardLink>
+          ))}
         </Cards>
         <Reset onClick={reset} />
       </Tools>
