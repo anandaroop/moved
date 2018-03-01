@@ -57,7 +57,7 @@ class Map extends Component {
     this._map.flyTo({ duration, ...destination })
   }
 
-  componentDidMount() {
+  setup() {
     const { preflight, origin, destination } = this.props
     const startingView = preflight ? destination : origin
 
@@ -67,6 +67,37 @@ class Map extends Component {
       ...startingView
     })
 
+    this._map.on('load', ({ target: map }) => {
+      let style = map.getStyle()
+      map.setStyle({
+        light: {
+          anchor: 'map',
+          color: 'white',
+          intensity: 0.15,
+          position: [1.5, 90, 80]
+        },
+        ...style
+      })
+
+      map.addLayer({
+        id: '3d-buildings',
+        source: 'composite',
+        'source-layer': 'building',
+        filter: ['==', 'extrude', 'true'],
+        type: 'fill-extrusion',
+        minzoom: 16,
+        paint: {
+          'fill-extrusion-color': '#fff',
+          'fill-extrusion-height': ['interpolate', ['linear'], ['zoom'], 16, 0, 16.05, ['get', 'height']],
+          'fill-extrusion-base': ['interpolate', ['linear'], ['zoom'], 16, 0, 16.05, ['get', 'min_height']],
+          'fill-extrusion-opacity': 0.8
+        }
+      })
+    })
+  }
+
+  componentDidMount() {
+    this.setup()
     this.setState({
       mapState: Map.PREFLIGHTING
     })
