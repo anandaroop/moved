@@ -30,9 +30,26 @@ cp config.example.js config.js
 vi config.js
 ```
 
-### 3. Start the Storybook server
+### 3. Start the create-react-app server
+
+```sh
+yarn start
+open http://localhost:3000/
+```
+
+### 4. Run the Cypress spec
+
+
+```sh
+yarn run cypress open
+# then click on simple_spec.js
+```
+
+### 5. Start the Storybook server
 
 ```sh
 yarn run storybook
 open http://localhost:9009/
 ```
+
+Storybook is probably the easiest place to develop
