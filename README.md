@@ -26,18 +26,24 @@ cd moved
 Such as the Mapbox access token you obtained in Step 0.
 
 ```sh
-cp config.example.js config.js 
-vi config.js
+cp src/config.example.js src/config.js 
+# replace settings as necessary
 ```
 
-### 3. Start the create-react-app server
+### 3. Install dependencies
+
+```sh
+yarn install # or npm install
+```
+
+### 4. Start the create-react-app server
 
 ```sh
 yarn start
 open http://localhost:3000/
 ```
 
-### 4. Run the Cypress spec
+### 5. Run the Cypress spec
 
 
 ```sh
@@ -45,7 +51,7 @@ yarn run cypress open
 # then click on simple_spec.js
 ```
 
-### 5. Start the Storybook server
+### 6. Start the Storybook server
 
 ```sh
 yarn run storybook
