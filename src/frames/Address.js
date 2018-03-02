@@ -67,7 +67,7 @@ const Address = ({ duration, reset }) => (
       </div>
       <Tools>
         <Cards>
-          Download vCards:
+          Download vCards for your address book:
           {VCARDS.map(card => (
             <CardLink key={card.filename} href={card.filename}>
               {card.name}
