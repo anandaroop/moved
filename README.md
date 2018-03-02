@@ -1,4 +1,4 @@
-# Change
+# Moved
 
 A change-of-address announcement that allowed me to experiment with:
 
@@ -17,8 +17,8 @@ In order to hack on this you will need a [Mapbox access token](https://www.mapbo
 ### 1. Clone the repo 
 
 ```sh
-git clone https://github.com/anandaroop/change.git
-cd change
+git clone https://github.com/anandaroop/moved.git
+cd moved
 ```
 
 ### 2. Configure the app with some secrets

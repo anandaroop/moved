@@ -1,5 +1,5 @@
 {
-  "name": "change",
+  "name": "moved",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,7 +21,7 @@
     "react-scripts": "1.1.1",
     "vcards-js": "^2.8.0"
   },
-  "homepage": "http://anandaroop.github.io/change",
+  "homepage": "http://anandaroop.github.io/moved",
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
       "prettier --single-quote --no-semi --print-width 120 --write",
