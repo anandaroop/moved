@@ -7,6 +7,7 @@ A change-of-address announcement that allowed me to experiment with:
   - in pure CSS
   - and with [react-keyframes](https://github.com/zeit/react-keyframes)
 - await/async
+- Cypress tests
 
 ## Development
 
